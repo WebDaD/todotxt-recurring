@@ -71,6 +71,9 @@ for (let index = 0; index < todosToAdd.length; index++) {
   let timer = todo.split(/-(.+)/)[0]
   let unit = timer.split(';')[0].trim()
   let line = todo.split(/-(.+)/)[1]
+  let numberString
+  let numbers
+  var m
   switch (unit) {
     case 'daily':
       line = today + line.replace(/\$DATE/g, today)
@@ -83,14 +86,14 @@ for (let index = 0; index < todosToAdd.length; index++) {
     case 'weekly':
       let startOfWeek = moment().startOf('week')
       let endOfWeek = moment().endOf('week')
-      let numberString = timer.split(';')[1].trim()
-      let numbers = []
+      numberString = timer.split(';')[1].trim()
+      numbers = []
       if (numberString.indexOf(',') > -1) {
         numbers = numberString.split(',')
       } else {
         numbers.push(numberString)
       }
-      for (var m = moment(startOfWeek); m.isBefore(endOfWeek); m.add(1, 'days')) {
+      for (m = moment(startOfWeek); m.isBefore(endOfWeek); m.add(1, 'days')) {
         let day = m.format('YYYY-MM-DD')
         let dayOfWeek = m.format('d')
         let addLine = day + line.replace(/\$DATE/g, day)
@@ -100,13 +103,48 @@ for (let index = 0; index < todosToAdd.length; index++) {
           console.log('Added Line: ' + addLine)
         }
       }
-      // TODO: whole week (loop over moment)
       break
     case 'monthly':
-      // TODO: whole week (loop over moment)
+      let startOfMonth = moment().startOf('month')
+      let endOfMonth = moment().endOf('month')
+      numberString = timer.split(';')[1].trim()
+      numbers = []
+      if (numberString.indexOf(',') > -1) {
+        numbers = numberString.split(',')
+      } else {
+        numbers.push(numberString)
+      }
+      for (m = moment(startOfMonth); m.isBefore(endOfMonth); m.add(1, 'days')) {
+        let day = m.format('YYYY-MM-DD')
+        let dayOfMonth = m.format('D')
+        let addLine = day + line.replace(/\$DATE/g, day)
+        if (numbers.indexOf(dayOfMonth) > -1 && todosAdded.indexOf(addLine) < 0) {
+          fs.appendFileSync(todoTXT, addLine + '\n', 'utf8')
+          fs.appendFileSync(todoRecurringAdded, addLine + '\n', 'utf8')
+          console.log('Added Line: ' + addLine)
+        }
+      }
       break
     case 'yearly':
-      // TODO: whole week (loop over moment)
+      let startOfYear = moment().startOf('year')
+      let endOfYear = moment().endOf('year')
+      numberString = timer.split(';')[1].trim()
+      numbers = []
+      if (numberString.indexOf(',') > -1) {
+        numbers = numberString.split(',')
+      } else {
+        numbers.push(numberString)
+      }
+      for (m = moment(startOfYear); m.isBefore(endOfYear); m.add(1, 'days')) {
+        let day = m.format('YYYY-MM-DD')
+        let dayOfYear = m.format('DDD')
+        let addLine = day + line.replace(/\$DATE/g, day)
+        if (numbers.indexOf(dayOfYear) > -1 && todosAdded.indexOf(addLine) < 0) {
+          fs.appendFileSync(todoTXT, addLine + '\n', 'utf8')
+          fs.appendFileSync(todoRecurringAdded, addLine + '\n', 'utf8')
+          console.log('Added Line: ' + addLine)
+        }
+      }
       break
     default:
       console.error(unit + ' is not a valid unit.')
