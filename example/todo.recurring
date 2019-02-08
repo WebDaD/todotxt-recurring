@@ -1,0 +1,4 @@
+weekly ; 2 - (A) Windows Updates +server @company
+daily - (A) Windows Restart +server @company
+monthly ; 1,15 - (A) Clean EventLog +server @company due:$DATE
+yearly ; 120 - (A) Reinstall Windows +server @company

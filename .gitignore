@@ -1,2 +1,4 @@
 node_modules
 bin/
+example/todo.recurring.added
+example/todo.bak
