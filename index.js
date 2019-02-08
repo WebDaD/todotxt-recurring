@@ -81,7 +81,25 @@ for (let index = 0; index < todosToAdd.length; index++) {
       }
       break
     case 'weekly':
-      // let number = timer.split(';')[1].trim()
+      let startOfWeek = moment().startOf('week')
+      let endOfWeek = moment().endOf('week')
+      let numberString = timer.split(';')[1].trim()
+      let numbers = []
+      if (numberString.indexOf(',') > -1) {
+        numbers = numberString.split(',')
+      } else {
+        numbers.push(numberString)
+      }
+      for (var m = moment(startOfWeek); m.isBefore(endOfWeek); m.add(1, 'days')) {
+        let day = m.format('YYYY-MM-DD')
+        let dayOfWeek = m.format('d')
+        let addLine = day + line.replace(/\$DATE/g, day)
+        if (numbers.indexOf(dayOfWeek) > -1 && todosAdded.indexOf(addLine) < 0) {
+          fs.appendFileSync(todoTXT, addLine + '\n', 'utf8')
+          fs.appendFileSync(todoRecurringAdded, addLine + '\n', 'utf8')
+          console.log('Added Line: ' + addLine)
+        }
+      }
       // TODO: whole week (loop over moment)
       break
     case 'monthly':
