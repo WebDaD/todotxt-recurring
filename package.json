@@ -1,6 +1,6 @@
 {
   "name": "todotxt-recurring",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Allows simple Recurring Events, Using a Flat-File",
   "main": "index.js",
   "scripts": {
