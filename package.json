@@ -1,0 +1,31 @@
+{
+  "name": "todotxt-recurring",
+  "version": "1.0.0",
+  "description": "Allows simple Recurring Events, Using a Flat-File",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "todotxt-recur": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WebDaD/todotxt-recurring.git"
+  },
+  "keywords": [
+    "todotxt",
+    "todo",
+    "recurring"
+  ],
+  "author": "Dominik Sigmund <dominik.sigmund@webdad.eu>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WebDaD/todotxt-recurring/issues"
+  },
+  "homepage": "https://github.com/WebDaD/todotxt-recurring#readme",
+  "dependencies": {
+    "commander": "^2.19.0",
+    "moment": "^2.24.0"
+  }
+}
