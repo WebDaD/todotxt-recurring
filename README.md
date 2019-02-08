@@ -2,7 +2,9 @@
 
 Allows simple Recurring Events, Using a Flat-File
 
-Uses extended Syntaxt of [Todo.txt](http://todotxt.org/)
+Uses extended Syntax of [Todo.txt](http://todotxt.org/)
+
+and is inspired by [ice_recur](https://github.com/rlpowell/todo-text-stuff/blob/master/ice_recur)
 
 ## Installation
 

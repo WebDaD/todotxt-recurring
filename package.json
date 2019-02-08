@@ -18,7 +18,7 @@
     "todo",
     "recurring"
   ],
-  "author": "Dominik Sigmund <dominik.sigmund@webdad.eu>",
+  "author": "Dominik Sigmund <dominik.sigmund@webdad.eu> (https://webdad.eu)",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/WebDaD/todotxt-recurring/issues"
