@@ -1,13 +1,13 @@
 {
   "name": "todotxt-recurring",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Allows simple Recurring Events, Using a Flat-File",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "todotxt-recur": "index.js"
+    "todotxt-recurring": "./index.js"
   },
   "repository": {
     "type": "git",
